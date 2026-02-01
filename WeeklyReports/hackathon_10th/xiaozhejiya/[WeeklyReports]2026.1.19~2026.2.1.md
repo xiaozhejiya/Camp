@@ -61,7 +61,6 @@ PaddleOCR + ERNIE × Open-Source Ecosystem
   - 后端 `/api/upload` 接口改为接收 `files` 字段的文件列表（`request.files.getlist('files')`），兼容单文件 `file` 字段
   - 循环校验每个文件的格式和大小，逐一保存后将路径列表传入工作流
   - 前端修复拖拽上传丢失文件问题：将 `e.dataTransfer.files`（FileList）通过 `Array.from()` 转为数组，避免部分浏览器在事件结束后清空 DataTransfer 对象
-  - 合并 PR #9
 - **新增 OCR API 重试机制**（`src/paddleocr_client.py`）：
   - 在 `async_parse_image()` 的异步请求中增加最多 3 次重试，失败后按 `attempt * 5` 秒递增等待（5s / 10s / 15s），提升 API 调用稳定性
 - **合并协作者 PR**：
@@ -70,8 +69,10 @@ PaddleOCR + ERNIE × Open-Source Ecosystem
 
 ### 下周计划  
 
-1. 学习 LangGraph 的基本概念与开发方式（Graph/Node/Edge、编排与执行模型、调试方式）。  
-2. 学习并掌握 LangGraph 中的 State 设计与管理（如 AgentState/状态流转、状态字段定义、如何在节点间传递与更新状态）。  
-3. 基于学习结果，整理一份可复用的 LangGraph + AgentState 最小示例工程（便于后续将错题本流程接入 Graph 运行）。 
+1. 基于LangChain 实现Agent 异步调用
+2. 复现[ [EnsExam](https://discovery.ucl.ac.uk/id/eprint/10174246/1/2023_ICDAR_paper_8652.pdf?utm_source=chatgpt.com) ]( [https://discovery.ucl.ac.uk/id/eprint/10174246/1/2023_ICDAR_paper_8652.pdf?utm_source=chatgpt.com) 探索擦除笔记的方法
+3. 修复错误
+   1. 上传多文件或PDF时会出现没有错题输出的情况
+   2. 成功上传图片后如何没有进行分割问题再次上传图片会出现报错
 
 ### 导师点评
