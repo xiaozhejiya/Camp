@@ -8,15 +8,6 @@ PaddleOCR + ERNIE × Open-Source Ecosystem
 
 ## 本周工作  
 
-### 项目初始化
-
-完成项目首次提交，搭建基础代码结构：
-- `src/paddleocr_client.py`：封装 PaddleOCR API 客户端，使用 `requests` 库发送 base64 编码图片，解析返回的 `layoutParsingResults` 并保存结构化 JSON
-- `src/workflow.py`：基于 `ErrorCorrectionWorkflow` 类编排 5 步工作流（prepare_input → paddleocr_parse → split_questions → build_preview → export_wrongbook）
-- `src/utils.py`：实现 PDF 转图片（`pdf2image`）、图片标准化、HTML 预览生成、Markdown 错题本导出
-- `error_correction_agent/`：基于 LangChain 创建 DeepSeek Agent，定义 4 个工具（`save_questions`、`log_issue`、`download_image`、`read_ocr_result`），用于智能分割题目
-- 配置 `.env.example`、`requirements.txt`、`langgraph.json` 等工程文件
-
 ### 前端页面 & Bug 修复
 
 - **新增 Web 前端**：使用 Flask 实现 `web_app.py`，提供文件上传、OCR 解析、题目预览、导出等 API 路由；`templates/index.html` 实现拖拽上传交互界面
